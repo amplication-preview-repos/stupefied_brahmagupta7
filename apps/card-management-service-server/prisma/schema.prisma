@@ -1,0 +1,19 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model CreditCard {
+  cardHolderName String?
+  cardNumber     String?
+  createdAt      DateTime  @default(now())
+  cvc            String?
+  expiryDate     DateTime?
+  id             String    @id @default(cuid())
+  updatedAt      DateTime  @updatedAt
+  user           String?
+}
